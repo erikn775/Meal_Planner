@@ -2,28 +2,39 @@ class RecipesController < ApplicationController
 
     def index
         @recipes = Recipe.all
-        binding.pry
     end
     
     def new
         @recipe = Recipe.new
-        2.times {@recipe.ingredients.build}
+        10.times {@recipe.ingredients.build}
         
     end
     
     def create
-        
-        @recipe = Recipe.create(recipe_params)
+         @recipe = Recipe.create(recipe_params)
             redirect_to recipe_path(@recipe)
     
     end
 
     def show
-        @recipe = Recipe.find(params[:id])
+        @recipe = Recipe.find_by(id: params[:id])
     end
     
     def edit
-    
+        @recipe = Recipe.find_by(id: params[:id])
+    end
+
+    def update
+        @recipe = Recipe.find_by(id: params[:id])
+        @recipe.update(recipe_params)
+        redirect_to recipe_path(@recipe)
+    end
+
+    def destroy
+        
+        @recipe = Recipe.find_by(id: params[:id])
+        @recipe.destroy
+        redirect_to recipes_path
     end
     
     private
@@ -32,7 +43,4 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(:name, ingredients_attributes: [:name, :quantity, :unit])
     end
 
-    # def ingredient_params
-    #     params.require(:ingredients).permit(:name, :quantity, :unit, :recipe)
-    # end
 end

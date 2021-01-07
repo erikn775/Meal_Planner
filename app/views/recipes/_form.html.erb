@@ -1,0 +1,15 @@
+<%= form_with(model: @recipe) do |f| %>
+    <%= f.label("Recipe Name:") %>
+    <%= f.text_field(:name) %><br><br>
+
+    <%= f.fields_for :ingredients do |i| %>
+        <%= i.label("Ingredient:") %>
+        <%= i.text_field(:name) %>
+        <%= i.label("Quantity:") %>
+        <%= i.text_field(:quantity) %>
+        <%= i.label("Unit:") %>
+        <%= i.text_field(:unit) %><br>
+    <% end %>
+
+<%= f.submit %>
+<% end %> 

@@ -4,3 +4,6 @@
             <li><%= plural(ingredient) %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>
     <% end %>
 </ul>
+
+<%= button_to "Edit Recipe", edit_recipe_path(@recipe) %><br>
+<%= button_to "Delete Recipe", recipe_path(:id => @recipe.id), :method => :delete %>
