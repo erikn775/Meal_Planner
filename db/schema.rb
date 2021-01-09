@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_162000) do
+ActiveRecord::Schema.define(version: 2021_01_09_040339) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -27,16 +27,26 @@ ActiveRecord::Schema.define(version: 2021_01_08_162000) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "meal_plan", force: :cascade do |t|
-    t.string "week_of"
-    t.integer "user_id"
+  create_table "meal_plan_recipes", id: false, force: :cascade do |t|
+    t.integer "recipes_id"
+    t.integer "meal_plans_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["meal_plans_id"], name: "index_meal_plan_recipes_on_meal_plans_id"
+    t.index ["recipes_id"], name: "index_meal_plan_recipes_on_recipes_id"
   end
 
-  create_table "planners", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "meal_plan_id"
+  create_table "meal_plans", force: :cascade do |t|
+    t.string "week_of"
+    t.string "shopping_list"
+    t.string "monday"
+    t.string "tuesday"
+    t.string "wednesday"
+    t.string "thursday"
+    t.string "friday"
+    t.string "saturday"
+    t.string "sunday"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,7 +55,6 @@ ActiveRecord::Schema.define(version: 2021_01_08_162000) do
     t.string "name"
     t.integer "user_id"
     t.integer "category_id"
-    t.integer "meal_plan_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+    include ApplicationHelper
+    before_action :require_login
+    skip_before_action :require_login, only: [:index, :show]
 
     def index
         @categories = Category.all
@@ -7,7 +10,6 @@ class CategoriesController < ApplicationController
 
     def new 
         @category = Category.new
-        #@category.build_recipe
     end
 
     def create

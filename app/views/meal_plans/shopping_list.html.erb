@@ -1,0 +1,8 @@
+<% binding.pry %>
+<h1>Week of: <%= @meal_plan.week_of %>
+
+<ul>
+<% @meal_plan.shopping_list.each do |list| %>
+    <li><%= list.name %> - <%= list.quantity %> <%= list.unit %></li>
+<% end %>
+</ul>

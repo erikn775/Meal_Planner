@@ -1,0 +1,22 @@
+
+<%= form_with(model: @meal_plan) do |f| %>
+    <%= f.label("Week of Plan:") %>
+    <%= f.text_field(:week_of) %><br>
+    <%= f.label("Monday:") %><br>
+    <%= f.collection_select(:monday, Recipe.order(:name), :name, :name, prompt: true) %><br>
+    <%= f.label("Tuesday:") %><br>
+    <%= f.collection_select(:tuesday, Recipe.order(:name), :name, :name, prompt: true) %><br>
+    <%= f.label("Wednesday:") %><br>
+    <%= f.collection_select(:wednesday, Recipe.order(:name), :name, :name, prompt: true) %><br>
+    <%= f.label("Thursday:") %><br>
+    <%= f.collection_select(:thursday, Recipe.order(:name), :name, :name, prompt: true) %><br>
+    <%= f.label("Friday:") %><br>
+    <%= f.collection_select(:friday, Recipe.order(:name), :name, :name, prompt: true) %><br>
+    <%= f.label("Saturday:") %><br>
+    <%= f.collection_select(:saturday, Recipe.order(:name), :name, :name, prompt: true) %><br>
+    <%= f.label("Sunday:") %><br>
+    <%= f.collection_select(:sunday, Recipe.order(:name), :name, :name, prompt: true) %><br>
+    
+
+<%= f.submit %>
+<% end %> 

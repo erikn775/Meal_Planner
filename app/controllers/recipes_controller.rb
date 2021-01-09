@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-    before_action :require_login
     include ApplicationHelper
+    before_action :require_login
 
     def index
         @recipes = Recipe.all
@@ -9,12 +9,9 @@ class RecipesController < ApplicationController
     def new
         @recipe = Recipe.new
         10.times {@recipe.ingredients.build}
-        #@recipe.category_id.build
-        
     end
     
     def create
-
         @recipe = current_user.recipes.new(recipe_params)
         if @recipe.save
             redirect_to recipe_path(@recipe)
@@ -22,9 +19,6 @@ class RecipesController < ApplicationController
             @errors = @recipe.errors.full_messages.join(" - ")
             render :new
         end 
-        
-            #flash.now[:alert] = "You Must be Logged In" 
-        
     end
 
     def show

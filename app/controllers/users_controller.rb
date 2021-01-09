@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     include ApplicationHelper
-    
+
     def new
         @user = User.new
     end
@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     end
     
     def show
+        @user = User.find(session[:user_id])
+        @recipes = current_user.recipes.all
+        #binding.pry
+    end
+
+    def recipes
         @user = User.find(session[:user_id])
         @recipes = current_user.recipes.all
     end

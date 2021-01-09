@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
     belongs_to :user
     has_many :ingredients
-    has_many :meal_plans, through: :planners
+    has_and_belongs_to_many :meal_plans
     accepts_nested_attributes_for :ingredients, reject_if: proc { |att| att['name'].blank? }
     validates :name, presence: true
 

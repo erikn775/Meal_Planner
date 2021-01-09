@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  #resources :planners
   get '/login' => "sessions#new"
   post '/sessions' => "sessions#create"
   get '/logout' => 'sessions#destroy'
   get '/account' => 'users#show'
-  resources :meals
+  get 'account/recipes' => 'users#recipes'
+  get 'shopping_list' => 'meal_plans#shopping_list'
+  resources :meal_plans
   resources :categories
   resources :users, :only => [:new, :create]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :recipes
 end

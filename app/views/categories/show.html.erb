@@ -6,3 +6,6 @@
         <li><%= link_to(recipe.name, recipe_path(recipe)) %>
     <% end %>
 </ul>
+
+<%= button_to "Edit Category", edit_category_path(@category) %><br>
+<%= button_to "Delete Category", category_path(:id => @category.id), :method => :delete %>
