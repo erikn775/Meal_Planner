@@ -1,4 +1,5 @@
 <h1><%= @recipe.name %></h1>
+<h3>Created By: <%=@recipe.user.name.capitalize %></h3>
 <ul>
     <% @recipe.ingredients.each do |ingredient| %>
             <li><%= plural(ingredient) %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>

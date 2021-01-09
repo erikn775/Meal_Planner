@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+category_list = ["Japanese", "Korean", "Chinese", "Comfort Food", "Mexican", "Italian", "Bread", "Dessert", "French", "Quick Breads", "Cocktails", "Misc."]
+
+category_list.each do |name|
+    Category.create(name: name)
+end

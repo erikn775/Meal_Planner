@@ -1,0 +1,7 @@
+<h1>Welcome <%=@user.name.capitalize %></h1>
+
+<h2>Your Recipes</h2>
+<ul>
+<% @recipes.each do |recipe| %>
+    <li><%= link_to(recipe.name, recipe_path(recipe)) %>
+<% end %>
